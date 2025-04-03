@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbed Web Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: left;
+            padding: 20px;
+        }
+        .tab {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            background: #FFDDC1;
+            color: #333;
+            cursor: pointer;
+            border-radius: 5px;
+            border: none;
+        }
+        .tab:hover {
+            background: #FFC8A2;
+        }
+        .tab.active-tab {
+            background: #D2691E;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student writing a thought paper for class</h1>
+    <p>&nbsp;</p>
+<table style="background-color: #e4f6f8; width: 700px;" border="0" cellpadding="5">
+<tbody>
+<tr>
+<td>
+<p><span style="color: #993300;"><strong>Scenario</strong></span></p>
+<ul>
+<li><strong>A student taking an MBA class</strong> and need help writing a thought paper as a homework after reading class materials.</li>
+<li>They uploaded all class materials about biases in organization. The files include a few articles, book chapters, and case studies.</li>
+<img src="data:image/jpeg;base64,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" alt="description" />
+<li><strong>The student&nbsp;asked AI to help come up with a 1000-word thought paper that reflect on all the readings and make connections to real world scenarios, especially in the workspace.</strong></li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+    <div>
+        <span class="tab active-tab" onclick="showTab('tab1', this)">Output 1</span>
+        <span class="tab" onclick="showTab('tab2', this)">Output 2</span>
+        <span class="tab" onclick="showTab('tab3', this)">Output 3</span>
+        <span class="tab" onclick="showTab('tab4', this)">Output 4</span>
+    </div>
+    <div id="tab1" class="tab-content active">
+<div>
+<div class="style__markdown___3Er_4">
+    <div id="answer_copyable_36cd4097-0058-440b-865a-08c76ce1583b" class="copyable_answers" data-testid="qna_answer">
+        <div class="MarkdownComponent__markdown____ztLt">
+        <h3>Thought Paper: Reflections on Workplace Dynamics and Applications of Knowledge</h3>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">The readings provided offer a rich tapestry of insights into workplace dynamics, biases, and the profound impact of managerial behavior on employee performance.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">This paper reflects on these themes, drawing connections between the theoretical frameworks and real-world workplace scenarios.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">By examining concepts such as the Pygmalion effect, unconscious biases, the set-up-to-fail syndrome, and the challenges of diversity, we can better understand how to foster inclusive, ethical, and high-performing organizational cultures.</span></p>
+        <h4><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">The Power of Expectations: The Pygmalion Effect in Management</span></h4>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">The Pygmalion effect, as discussed in the readings, underscores the transformative power of managerial expectations.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">When managers hold high expectations for their employees, they often create a self-fulfilling prophecy where employees rise to meet those expectations.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">Conversely, low expectations can lead to diminished performance.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">This dynamic is vividly illustrated in the case of Lee Iacocca at Chrysler, where his confidence and high expectations galvanized employees to achieve remarkable results.</span></p>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">In the workplace, this principle can be applied to leadership development programs.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">For instance, assigning stretch assignments to employees signals trust in their capabilities, which can boost their confidence and performance.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">However, it is crucial that these expectations are realistic and supported by adequate resources.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">Unrealistic goals, as noted in the readings, can demotivate employees and lead to burnout.</span></p>
+        <h4><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">Unconscious Biases: Ethical Challenges in Decision-Making</span></h4>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">The article "How (Un)ethical Are You?"</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">highlights the pervasive nature of unconscious biases and their impact on managerial decisions.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">Biases such as in-group favoritism, implicit prejudice, and overclaiming credit can undermine fairness and inclusivity in the workplace.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">For example, a manager might unconsciously favor employees who share their alma mater or cultural background, leading to inequitable opportunities for others.</span></p>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">To counteract these biases, organizations can implement structured decision-making processes.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">For instance, using blind evaluations during recruitment can help ensure that candidates are assessed solely on their qualifications.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">Additionally, exposing managers to diverse environments, as demonstrated by the judge who worked in a different community, can challenge stereotypes and broaden perspectives.</span></p>
+        <h4><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">The Set-Up-to-Fail Syndrome: Breaking the Vicious Cycle</span></h4>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">The set-up-to-fail syndrome describes a destructive cycle where managers' low expectations lead to increased scrutiny and micromanagement, which in turn erodes employees' confidence and performance.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">This dynamic often results in the employee's eventual departure, either voluntarily or involuntarily.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">The case of Steve and Jeff exemplifies how miscommunication and mistrust can spiral into a toxic relationship.</span></p>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">Breaking this cycle requires managers to engage in open and honest conversations with their subordinates.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">By acknowledging their own biases and seeking to understand the root causes of performance issues, managers can rebuild trust and create a more supportive environment.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">For example, a manager might work collaboratively with an employee to identify specific areas for improvement and provide targeted coaching and resources.</span></p>
+        <h4><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">Diversity and Inclusion: Overcoming Barriers</span></h4>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">The challenges of managing diversity are explored in the readings, particularly in the context of cognitive biases and organizational structures.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">Traditional diversity training often fails to produce meaningful change because it does not address the underlying biases embedded in organizational processes.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">For instance, merit is often assessed through a narrow lens that favors dominant groups, perpetuating systemic inequities.</span></p>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">To create truly inclusive workplaces, organizations must redesign their processes to eliminate biases.</span> This might involve revising performance evaluation criteria to account for diverse contributions or implementing mentorship programs that support underrepresented groups. <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">Additionally, fostering a culture of psychological safety, where employees feel valued and heard, can enhance collaboration and innovation.</span></p>
+        <h4>Real-World Applications: Building Ethical and Inclusive Organizations</h4>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">The insights from these readings have profound implications for real-world workplace scenarios.</span> For example, consider a tech company struggling with high turnover among women and minority employees. By applying the principles discussed, the company could:</p>
+        <ol>
+        <li>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1"><strong>Address Unconscious Biases</strong>: Conduct an audit of hiring and promotion practices to identify and mitigate biases.</span> This might include using diverse interview panels and standardizing evaluation criteria.</p>
+        </li>
+        <li>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1"><strong>Leverage the Pygmalion Effect</strong>: Train managers to set high, yet achievable, expectations for all employees and provide the necessary support to help them succeed.</span></p>
+        </li>
+        <li>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1"><strong>Break the Set-Up-to-Fail Syndrome</strong>: Encourage managers to have candid conversations with employees about performance expectations and provide constructive feedback.</span></p>
+        </li>
+        <li>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1"><strong>Redesign Organizational Processes</strong>: Implement policies that promote equity, such as flexible work arrangements and transparent career progression pathways.</span></p>
+        </li>
+        </ol>
+        <p>By integrating these strategies, the company can create a more inclusive and high-performing culture, ultimately driving better business outcomes.</p>
+        <h4>Conclusion</h4>
+        <p><span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">The readings collectively emphasize the importance of self-awareness, intentionality, and systemic change in fostering ethical and inclusive workplaces.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">Whether it is through challenging unconscious biases, leveraging the power of expectations, or redesigning organizational processes, the insights provided offer a roadmap for creating environments where all employees can thrive.</span> <span class="MarkdownComponent__markdownText___UNa25" tabindex="-1">As we navigate the complexities of the modern workplace, these principles serve as a guiding light, reminding us of the profound impact of our actions and decisions on those around us.</span></p>
+        
+        </div>
+        </div>
+        <!-- Comments are visible in the HTML source only -->
+</div>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+    </div>
+    
+    <div id="tab2" class="tab-content">
+        
+        <p>Here is a thought paper reflecting on the provided readings and their connections to real-world workplace scenarios:</p>
+        <p><strong>The Interplay of Expectations, Bias, and Systemic Failures in the Workplace</strong></p>
+        <p>The collection of readings provided offers a compelling and often unsettling look into the intricate dynamics that shape individual performance and organizational success. From the insidious "set-up-to-fail syndrome" to the pervasive influence of unconscious biases, and the powerful "Pygmalion effect", these sources reveal how managerial expectations, often operating beneath the surface of conscious awareness, can profoundly impact employees' capabilities and career trajectories. Furthermore, the exploration of designing bias-free organizations and the paradox of meritocracy highlights the systemic challenges in fostering equitable and high-performing workplaces. The case study of Ann Hopkins serves as a stark reminder of the tangible consequences of these dynamics, illustrating how deeply ingrained biases can obstruct even the most objectively successful individuals.</p>
+        <p>One of the most striking connections across these readings is the <strong>self-fulfilling prophecy embedded in managerial expectations</strong>. The "set-up-to-fail syndrome" explicitly details how a manager's low expectations can lead to increased scrutiny and micromanagement, which subordinates interpret as a lack of trust. This, in turn, often causes them to withdraw, lose motivation, and ultimately underperform, thus confirming the manager's initial low expectations. Ironically, managers often attribute this poor performance solely to the employee's deficiencies, failing to recognize their own role in creating the negative cycle. The "Pygmalion in Management" article reinforces this concept, arguing that <strong>managers' expectations are a key determinant of subordinates' performance and development</strong>. Just as Professor Higgins's treatment shaped Eliza Doolittle's identity, managers can inadvertently limit or enhance their employees' potential through the expectations they communicate, both consciously and unconsciously. Superior managers, it is noted, have the ability to create high-performance expectations that subordinates fulfill.</p>
+        <p>However, these expectations are not formed in a vacuum. The readings on unconscious bias illuminate how <strong>hidden prejudices and in-group favoritism can skew managers' perceptions and, consequently, their expectations of different employees</strong>. Implicit prejudice, rooted in unconscious associations and stereotypes, can lead managers to overlook the potential of individuals from certain demographic groups. The "How (Un)ethical Are You?" article highlights how even well-meaning managers can harbor unconscious biases that influence hiring, promotion, and collaboration decisions. For example, a manager with an implicit gender bias might unconsciously doubt a female employee's assertiveness or leadership potential, leading to fewer challenging assignments and, ultimately, hindering her development. Similarly, in-group favoritism can lead managers to have higher expectations and offer more support to individuals who are similar to them.</p>
+        <p>The case of Ann Hopkins vividly demonstrates the detrimental impact of these biased expectations in a real-world scenario. Despite her exceptional performance in terms of billable hours and revenue generation, Hopkins's candidacy for partnership at Price Waterhouse was stalled, largely due to feedback laden with gender stereotypes. Comments about her needing "charm school" and "overcompensat[ing] for being a woman" reveal how her assertive and direct style, which might have been seen as strengths in a male colleague, were perceived negatively through a gendered lens. This case underscores how <strong>unconscious biases can lead to differential treatment and lower expectations for individuals who do not conform to traditional stereotypes</strong>, even when their objective performance is outstanding. The legal precedent set by this case highlights the potential for corporate liability arising from such unintentional discrimination.</p>
+        <p>Recognizing the pervasiveness and detrimental effects of unconscious bias, the "Designing a Bias-Free Organization" interview argues that <strong>relying solely on diversity training to change individual mindsets is often ineffective</strong>. Instead, Iris Bohnet advocates for redesigning organizational processes to prevent biased choices in the first place. The example of blind auditions in orchestras effectively illustrates how making demographic characteristics invisible can lead to more merit-based outcomes. This principle can be applied in various workplace scenarios, such as using software to anonymize resumes during the initial screening process or implementing structured interviews with standardized questions and scoring criteria. Similarly, being mindful of the language used in job advertisements can prevent unintentionally discouraging certain groups from applying.</p>
+        <p>Furthermore, the readings touch upon the <strong>challenges in objectively evaluating merit and the "paradox of meritocracy"</strong>. While merit seems like a fair basis for talent decisions, our evaluations are often susceptible to unconscious biases. As Lauren Rivera's research on hiring committees at professional services firms suggests, group discussions, intended to ensure rigor, can actually amplify the influence of negative stereotypes, especially in ambiguous situations. Evaluators tend to advocate most fervently for candidates who are most like them, further perpetuating homogeneity. This highlights the difficulty in truly achieving a meritocratic system when unconscious biases subtly shape our perceptions of talent and potential.</p>
+        <p>Applying these insights to real-world workplaces reveals numerous opportunities for intervention. Organizations should:</p>
+        <ul>
+        <li><strong>Educate managers about the "set-up-to-fail syndrome" and the "Pygmalion effect"</strong> to raise awareness of how their expectations influence employee performance. This can encourage managers to critically examine their assumptions and actively communicate positive and challenging expectations to all team members.</li>
+        <li><strong>Implement strategies to mitigate unconscious bias in key HR processes.</strong> This includes using blind resume reviews, structured interviews, diverse interview panels, and standardized performance evaluation criteria.</li>
+        <li><strong>Regularly audit decisions related to hiring, promotion, and compensation</strong> to identify potential patterns of bias. Analyzing data on representation and success rates across different demographic groups can reveal areas where unconscious biases may be at play.</li>
+        <li><strong>Focus on objective performance data rather than subjective "fit" or gut feelings</strong> when making talent decisions. Implementing clear performance metrics and providing regular, constructive feedback based on evidence can help reduce the influence of bias.</li>
+        <li><strong>Create environments that expose individuals to counter-stereotypical examples and role models</strong>. This can help challenge unconscious associations and broaden perceptions of what success looks like. The Kennedy School's initiative to display portraits of female leaders is a concrete example of this strategy.</li>
+        <li><strong>Encourage open communication and feedback</strong> between managers and subordinates. Creating a safe space for employees to voice concerns about perceived low expectations or biased treatment is crucial for breaking negative cycles. The five components for effective interventions outlined in the "Set-Up-to-Fail Syndrome" article provide a valuable framework for these crucial conversations.</li>
+        <li><strong>Recognize and address the "paradox of meritocracy"</strong> by acknowledging the role of chance and systemic factors in success. This can foster a greater awareness of potential inequities and encourage investment in more inclusive organizational practices.</li>
+        </ul>
+        <p>In conclusion, the readings underscore the profound and often invisible ways in which expectations and biases shape workplace dynamics. The "set-up-to-fail syndrome" and the negative consequences of low managerial expectations are inextricably linked to the pervasive influence of unconscious biases, which can lead to inequitable treatment and hinder organizational potential. The "Pygmalion effect" reminds us of the power of positive expectations, but this potential can only be fully realized in an environment where biases are actively mitigated through thoughtful process design, as advocated by Bohnet. The case of Ann Hopkins serves as a powerful illustration of the real-world costs of failing to address these interconnected issues. By embracing the principles of vigilance, data-driven decision-making, and a commitment to redesigning biased processes, organizations can move towards creating more equitable and ultimately more successful workplaces where all employees have the opportunity to thrive. The journey requires a continuous effort to challenge our own assumptions, foster open dialogue, and recognize that building a truly bias-free and high-performing organization is an ongoing investment, not a one-time fix.</p>
+        <!-- Comments are visible in the HTML source only -->
+    </div>
+    <div id="tab3" class="tab-content">
+        <h1>The Self-Fulfilling Nature of Expectations: Connecting Psychological Dynamics to Workplace Reality</h1>
+<p>The collection of readings presents a compelling examination of how psychological dynamics shape workplace interactions, performance, and careers. At the heart of these readings lies a powerful truth: our expectations of others can become self-fulfilling prophecies that either elevate or diminish human potential. By connecting these concepts to real-world workplace scenarios, we can better understand how to create environments where all employees can thrive.</p>
+<h2>The Pygmalion Effect and the Set-Up-to-Fail Syndrome</h2>
+<p>J. Sterling Livingston's "Pygmalion in Management" and Manzoni and Barsoux's "The Set-Up-to-Fail Syndrome" represent two sides of the same psychological coin. Livingston demonstrates how managers' high expectations can elevate performance, while Manzoni and Barsoux reveal how negative expectations create downward spirals. This dynamic appears consistently across contexts&mdash;from Metropolitan Life Insurance, where Oberlander's "superstaff" outperformed expectations, to organizations where perceived "weaker performers" progressively withdraw and underperform.</p>
+<p>The manufacturing supervisor Steve's relationship with his new boss Jeff illustrates this dynamic perfectly. Despite Steve's previous excellent performance, Jeff's increased supervision and skepticism triggered a defensive response, causing Steve to invest less energy in reports and become progressively disengaged. This story mirrors countless workplace situations where initial perceptions create self-reinforcing cycles.</p>
+<p>I've observed this phenomenon firsthand when a colleague was labeled as "difficult" by a new manager. Despite her previously stellar reputation, the manager's micromanagement and skepticism caused her to become increasingly withdrawn and defensive in meetings. Her performance declined not because of capability issues but because of damaged confidence and motivation&mdash;a textbook example of the set-up-to-fail syndrome.</p>
+<h2>The Pervasive Power of Unconscious Bias</h2>
+<p>Several readings highlight how unconscious biases distort our perceptions and decisions. Mark Snyder's research on physical attractiveness reveals how unconscious stereotypes lead men to treat women differently based on appearance, which causes women to behave in ways that confirm these stereotypes. Similarly, "How (Un)ethical Are You?" demonstrates how implicit prejudice, in-group favoritism, overclaiming credit, and conflicts of interest unconsciously influence our decisions.</p>
+<p>The Ann Hopkins case provides a compelling real-world example. Despite generating more business than any other partnership candidate, Hopkins was denied partnership partly because she didn't conform to gender expectations. Partners advised her to be "more feminine"&mdash;wear makeup, jewelry, and style her hair differently. This feedback revealed how gender bias shaped the evaluation process, despite her outstanding performance metrics.</p>
+<p>These biases appear even in organizations that consciously value diversity and meritocracy. As "We Just Can't Handle Diversity" notes, "if managers' expectations are high, productivity is likely to be excellent. If their expectations are low, productivity is likely to be poor." This mirrors research showing that up to 90% of managers treat some subordinates as members of an in-group while consigning others to an out-group, often based on unconscious criteria like similarity to themselves.</p>
+<h2>Designing Organizations to Overcome Bias</h2>
+<p>Rather than focusing solely on changing individual mindsets, several readings suggest that changing organizational processes is more effective. As Iris Bohnet argues in "Designing a Bias-Free Organization," "It's easier to change your processes than your people." This insight is powerful because it acknowledges the stubborn nature of unconscious bias while providing practical solutions.</p>
+<p>The orchestras that implemented blind auditions provide a compelling example. By having musicians audition behind a curtain, they increased the percentage of women from less than 10% to nearly 40%. This simple process change neutralized gender bias more effectively than any awareness training could have.</p>
+<p>Organizations can implement similar process changes across various functions. Structured interviews with standardized questions, blind resume reviews, clear performance metrics, and expanded candidate pools can all reduce the impact of bias. These systems don't require eliminating bias itself&mdash;just preventing it from influencing decisions.</p>
+<h2>Application to Contemporary Workplaces</h2>
+<p>These concepts have significant implications for modern workplaces. First, managers must recognize their crucial role in employee development, particularly for early-career professionals. As Livingston notes, "a young person's first manager is likely to be the most influential in that person's career." This places enormous responsibility on managers to set high expectations and provide the support needed to meet them.</p>
+<p>Second, organizations must design recruitment, evaluation, and promotion processes that minimize bias. Rather than relying on subjective "cultural fit" assessments that often reproduce homogeneity, companies should implement structured processes that focus on objective qualifications and demonstrated skills.</p>
+<p>Third, both individuals and organizations must cultivate awareness of how expectations shape performance. When managers categorize employees into "high potential" and "average" groups&mdash;whether formally or informally&mdash;they create self-fulfilling prophecies. Breaking this cycle requires constant vigilance and a willingness to challenge initial impressions.</p>
+<p>The practical challenge for organizations isn't just creating diverse workforces but creating environments where everyone can contribute fully. As demonstrated in the Oberlander case at Metropolitan Life Insurance, grouping people according to perceived potential often reinforces existing disparities. The assistant manager who refused to accept that her "average" group was less capable than the "superstaff" created a team that outperformed expectations precisely because she rejected those limitations.</p>
+<h2>Conclusion</h2>
+<p>These readings reveal that expectations are not merely passive predictions&mdash;they are active forces that shape reality. Whether through the Pygmalion effect, the set-up-to-fail syndrome, or unconscious bias, how we perceive and treat others profoundly influences their performance and development.</p>
+<p>The most valuable insight for contemporary workplaces is that addressing these dynamics requires both individual awareness and systemic change. By designing processes that minimize bias and cultivating leadership approaches that set high expectations for all employees, organizations can create environments where everyone has the opportunity to excel. As Livingston concludes, "The respect you give is the respect you get"&mdash;a simple but profound reminder of how our expectations of others can become their reality.</p>
+<!-- Comments are visible in the HTML source only -->
+    </div>
+    <div id="tab4" class="tab-content">
+        <h1>Self-Fulfilling Expectations: How Biases Shape Workplace Performance and Inclusion</h1>
+        <h2>Executive Summary</h2>
+        <p>How do expectations and perceptions create self-fulfilling prophecies that affect workplace performance and diversity? The readings present a compelling case that our biases&mdash;both conscious and unconscious&mdash;significantly impact how we evaluate others, how we interact with them, and ultimately how they perform. From the Pygmalion effect to the set-up-to-fail syndrome, these readings demonstrate that expectations don't merely predict reality; they actively create it. This paper analyzes how these dynamics operate at multiple levels and proposes evidence-based approaches to interrupt negative cycles while strengthening positive ones.</p>
+        <table style="background-color: #e4f6f8;" border="0" cellpadding="5">
+        <tbody>
+        <tr>
+        <td>
+        <p>🌐 <strong>From the Web</strong></p>
+        <p>McKinsey's 2021 "Women in the Workplace" study quantifies the impact of biased expectations: for every 100 men promoted to manager, only 86 women are promoted, creating a persistent "broken rung" at the first critical step up the corporate ladder.</p>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <h2>Framework: Multi-Level Analysis of Expectations and Bias</h2>
+        <p>To understand how biases and expectations shape workplace outcomes, I'll employ a multi-level framework that examines these phenomena across three interconnected domains:</p>
+        <ol>
+        <li><strong>Individual cognition</strong>: How implicit biases and mental shortcuts affect decision-making</li>
+        <li><strong>Interpersonal dynamics</strong>: How expectations influence manager-subordinate relationships</li>
+        <li><strong>Organizational systems</strong>: How processes and structures can either reinforce or mitigate biases</li>
+        </ol>
+        <p>This framework is appropriate because it recognizes that biases operate simultaneously at multiple levels and cannot be effectively addressed at just one level. As Bohnet argues in "Designing a Bias-Free Organization," changing individual mindsets is difficult; meaningful change requires addressing all three levels simultaneously.</p>
+        <h2>Individual Cognition: The Invisible Drivers of Decisions</h2>
+        <p>At the cognitive level, the readings reveal several biases that influence our perceptions:</p>
+        <p><strong>Implicit prejudice</strong> operates below conscious awareness, as demonstrated in "How (Un)ethical Are You?" The IAT (Implicit Association Test) research shows that most people harbor unconscious biases that contradict their conscious values. These biases affect our judgment of others' competence and potential, creating what Banaji, Bazerman, and Chugh call a "stereotype tax"&mdash;a hidden cost to organizations when qualified people are overlooked.</p>
+        <table style="background-color: #e4f6f8;" border="0" cellpadding="5">
+        <tbody>
+        <tr>
+        <td>
+        <p>🌐&nbsp;<strong>From the Web</strong></p>
+        <p>A 2020 study by Citi found that racial inequality has cost the U.S. economy $16 trillion over the past 20 years through disparities in wages, education, housing, and investment opportunities, quantifying the substantial economic impact of bias beyond moral considerations.</p>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <p><strong>In-group favoritism</strong> compounds this problem. As "We Just Can't Handle Diversity" highlights, we naturally favor people similar to ourselves when allocating opportunities and resources. This isn't always hostile discrimination but rather preferential treatment for our "in-group." Research on banking shows how white loan officers might apply stricter standards to Black applicants while being more lenient with white applicants&mdash;not necessarily from hostility but from subtle favoritism toward those who resemble them.</p>
+        <p><strong>Overclaiming credit</strong> further distorts our perceptions. Studies cited by Banaji show that team members collectively claim an average of 139% of the credit for group achievements. This bias leads to resentment and reduced collaboration, particularly affecting those already marginalized by other biases.</p>
+        <h2>Interpersonal Dynamics: Expectations That Shape Reality</h2>
+        <p>The interpersonal level reveals how our biases translate into behaviors that create self-fulfilling prophecies:</p>
+        <p><strong>The Pygmalion effect</strong>, as described by Livingston, demonstrates how managers' high expectations lead to superior performance. When managers genuinely believe in their subordinates' potential, they create conditions for success through more autonomy, feedback, and expressions of confidence. The Metropolitan Life Insurance case study showed dramatic performance improvements when managers treated salespeople as "superstaff."</p>
+        <table style="background-color: #e4f6f8;" border="0" cellpadding="5">
+        <tbody>
+        <tr>
+        <td>
+        <p>🌐&nbsp;<strong>From the Web</strong></p>
+        <p>Microsoft's transformation under Satya Nadella demonstrates the modern corporate application of the Pygmalion effect. By explicitly adopting a "growth mindset" culture emphasizing potential rather than fixed abilities, Microsoft's market cap grew from $300 billion to over $2 trillion while fundamentally changing its culture.</p>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <p>Conversely, <strong>the set-up-to-fail syndrome</strong> illustrates how negative expectations create downward spirals. Manzoni and Barsoux describe how managers, upon perceiving a subordinate as underperforming, increase scrutiny and control. This signals distrust, undermining the subordinate's confidence and motivation, which further reduces performance and "confirms" the manager's initial perception.</p>
+        <p>Mark Snyder's study on physical attractiveness provides a striking example of how stereotypes become self-fulfilling. Men who believed they were speaking with attractive women (based on random photo assignment) behaved more warmly and engagingly, which caused the women to respond in kind&mdash;even though the photos weren't of them. The women's behavior then reinforced the men's initial (unfounded) perceptions.</p>
+        <p>The Ann Hopkins case powerfully illustrates gender stereotyping in action. Despite generating more revenue than her peers, Hopkins was denied partnership at Price Waterhouse partly because she was deemed insufficiently feminine. Partners advised her to "walk, talk, and dress more femininely" and take "charm school" courses&mdash;feedback rarely given to male candidates. Her competence was dismissed because it didn't fit gender expectations.</p>
+        <h2>Organizational Systems: Designing for Better Outcomes</h2>
+        <p>At the organizational level, the readings suggest that structural approaches are more effective than individual training:</p>
+        <p>Iris Bohnet argues in "Designing a Bias-Free Organization" that <strong>process redesign</strong> is more effective than diversity training. Practices like blind r&eacute;sum&eacute; screening, structured interviews, and removing gender-biased language from job descriptions can bypass individual biases. The orchestras that implemented blind auditions, leading to a dramatic increase in female musicians, exemplify this approach.</p>
+        <table style="background-color: #e4f6f8;" border="0" cellpadding="5">
+        <tbody>
+        <tr>
+        <td>
+        <p>🌐&nbsp;<strong>From the Web</strong></p>
+        <p>Textio, an augmented writing platform, has found that gender-neutral job postings receive 42% more applications and help companies fill positions 17% faster, demonstrating that even small process changes can yield significant results.</p>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <p><strong>Data collection and measurement</strong> create accountability and awareness. MIT's acknowledgment of gender discrimination began with collecting data on salary, space, and resources, which led to doubling female faculty in science and engineering.</p>
+        <h2>Recommendations: Breaking Negative Cycles, Reinforcing Positive Ones</h2>
+        <p>Based on the readings, I recommend a multi-level approach to harness positive expectation effects while mitigating negative ones:</p>
+        <h3>Individual Level</h3>
+        <ol>
+        <li>
+        <p><strong>Implement deliberate decision protocols</strong> - Use structured approaches like "unpacking" (evaluating team members' contributions before claiming your own) to reduce overclaiming bias. Collect data before acting on intuition.</p>
+        </li>
+        <li>
+        <p><strong>Expose yourself to counterstereotypical environments</strong> - Like the judge who deliberately spent time in courts with white defendants to counteract unconscious associations between race and crime, seek experiences that challenge your biases.</p>
+        </li>
+        <li>
+        <p><strong>Broaden decision-making</strong> - Apply Rawls's "veil of ignorance" by asking, "How would I feel about this decision if I were in the disadvantaged group?" When considering candidates, start with a complete list rather than a mental shortlist.</p>
+        </li>
+        </ol>
+        <h3>Interpersonal Level</h3>
+        <ol start="4">
+        <li>
+        <p><strong>Conduct intervention conversations</strong> - For managers caught in the set-up-to-fail syndrome, follow Manzoni and Barsoux's five-step intervention process: create the right context, agree on symptoms, identify causes (including the manager's role), establish a path forward, and commit to open communication.</p>
+        </li>
+        <li>
+        <p><strong>Set positive expectations early</strong> - Following Livingston's "Pygmalion" research, start with high expectations for all new employees and provide more guidance in the beginning before gradually reducing involvement as performance improves.</p>
+        </li>
+        <li>
+        <p><strong>Develop early-career leaders</strong> - As Livingston notes, a person's first manager has the most profound impact on their career trajectory. Organizations should assign their best managers to work with new hires.</p>
+        </li>
+        </ol>
+        <h3>Organizational Level</h3>
+        <ol start="7">
+        <li>
+        <p><strong>Redesign selection processes</strong> - Implement blind resume screening, structured interviews with predetermined questions and evaluation criteria, and job ads with gender-neutral language.</p>
+        </li>
+        <li>
+        <p><strong>Systematically collect and analyze data</strong> - Regular audits of hiring, promotion, and compensation decisions can reveal patterns of bias that individual awareness cannot detect.</p>
+        </li>
+        <li>
+        <p><strong>Structure team interactions</strong> - Design meetings to elicit input from everyone, not just the most assertive or those in the "in-group."</p>
+        </li>
+        </ol>
+        <h2>Critical Reflection: Limitations and Future Directions</h2>
+        <p>This analysis has several limitations. First, these interventions require significant organizational commitment and cultural change. Organizations often implement "quick fix" diversity initiatives without addressing underlying systemic issues.</p>
+        <p>Second, there's a risk of backlash. As Johnson and Hekman's research shows, women and minorities who promote diversity are often penalized, while men who do so are not. This suggests the need for majority allies to lead change efforts.</p>
+        <p>Third, the readings focus primarily on gender bias and manager-subordinate relationships. Future research should explore how these dynamics apply to other dimensions of diversity and across different types of relationships (peer-to-peer, client interactions).</p>
+        <table style="background-color: #e4f6f8;" border="0" cellpadding="5">
+        <tbody>
+        <tr>
+        <td>
+        <p>🌐&nbsp;<strong>From the Web</strong></p>
+        <p>A 2022 study in Nature Human Behaviour found that diversity initiatives are more effective when framed around innovation and growth rather than remediation of past injustices, reducing majority group resistance by 40%&mdash;providing an evidence-based approach to minimize backlash.</p>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <p>Finally, these readings largely predate the COVID-19 pandemic and remote work revolution. How do expectations and biases operate in virtual environments? Can the reduced face-to-face contact minimize certain biases while potentially introducing new ones?</p>
+        <table style="background-color: #e4f6f8;" border="0" cellpadding="5">
+        <tbody>
+        <tr>
+        <td>
+        <p>🌐&nbsp;<strong>From the Web</strong></p>
+        <p>The pandemic has transformed workplace bias dynamics. A 2021 survey found that 67% of supervisors believe remote workers are more replaceable than in-person employees, while 81% of Black professionals prefer remote work partly due to reduced exposure to microaggressions&mdash;suggesting that remote work simultaneously reduces some biases while introducing new forms of "proximity bias."</p>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        <p>In conclusion, expectations powerfully shape workplace realities. By understanding how biases operate across multiple levels and implementing evidence-based interventions, organizations can harness the positive potential of the Pygmalion effect while mitigating the damage of negative expectations and stereotypes. Like Eliza Doolittle in Shaw's Pygmalion, employees become what they are treated as being&mdash;for better or worse.</p>
+    </div>
+    
+    <script>
+        function showTab(tabId, element) {
+            var tabs = document.getElementsByClassName('tab-content');
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].classList.remove('active');
+            }
+            document.getElementById(tabId).classList.add('active');
+
+            var tabButtons = document.getElementsByClassName('tab');
+            for (var i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove('active-tab');
+            }
+            element.classList.add('active-tab');
+        }
+    </script>
+</body>
+</html>
